@@ -1,7 +1,4 @@
 .page {
-  font-family: "Inter", sans-serif;
-  font-size: normal;
-  font-weight: normal;
   background-color: black;
   display: flex;
   flex-direction: column;
