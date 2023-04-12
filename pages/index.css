@@ -3,3 +3,76 @@
 @import url(../blocks/header.css);
 @import url(../blocks/logo.css);
 @import url(../blocks/profile.css);
+@import url(../blocks/cards.css);
+@import url(../blocks/card.css);
+@import url(../blocks/footer.css);
+@import url(../blocks/main.css);
+
+@media screen and (max-width: 950px) {
+  .header {
+    max-width: 750px;
+  }
+
+  .main {
+    max-width: 750px;
+  }
+
+  .footer {
+    max-width: 750px;
+  }
+}
+
+@media screen and (max-width: 650px) and (min-width: 340px) {
+  .heading {
+    height: 84px;
+    border: 1px solid #545454;
+  }
+
+  .logo {
+    padding-left: 27px;
+    height: 24px;
+    width: 126px;
+  }
+
+  .profile {
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .profile__profile-info {
+    justify-content: center;
+    padding-top: 26.25px;
+    padding-left: 0;
+  }
+
+  .profile__name {
+    font-size: 22px;
+  }
+
+  .profile__title {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .profile__edit-button {
+    height: 18px;
+    width: 18px;
+    background-size: 7.5px 7.5px;
+  }
+
+  .profile__add-button {
+    width: 100%;
+    max-width: 282px;
+    margin: auto;
+    margin-top: 36px;
+  }
+
+  .main {
+    max-width: 282px;
+  }
+
+  .footer {
+    max-width: 282px;
+    padding-top: 48px;
+  }
+}

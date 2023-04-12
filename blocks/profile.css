@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .profile__image {
@@ -40,6 +41,10 @@
 
 .profile__edit-button {
   background-color: black;
+  background-image: url(../images/pencil.svg);
+  background-position: center;
+  background-size: 10px 10px;
+  background-repeat: no-repeat;
   height: 24px;
   width: 24px;
   margin-left: 18px;
@@ -47,9 +52,8 @@
   border: 1px solid #ffffff;
 }
 
-.profile__edit-button-image {
-  height: 10px;
-  width: 10px;
+.profile__edit-button:hover {
+  opacity: 0.8;
 }
 
 .profile__add-button {
@@ -59,4 +63,8 @@
   padding: 0;
   border: 1px solid #ffffff;
   margin-left: auto;
+}
+
+.profile__add-button:hover {
+  opacity: 0.5;
 }
