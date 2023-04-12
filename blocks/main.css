@@ -5,3 +5,15 @@
   flex-direction: column;
   align-content: center;
 }
+
+@media screen and (max-width: 950px) {
+  .main {
+    max-width: 750px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .main {
+    max-width: 282px;
+  }
+}

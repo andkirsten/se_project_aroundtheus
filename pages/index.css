@@ -3,24 +3,10 @@
 @import url(../blocks/header.css);
 @import url(../blocks/logo.css);
 @import url(../blocks/profile.css);
-@import url(../blocks/cards.css);
+@import url(../blocks/gallery.css);
 @import url(../blocks/card.css);
 @import url(../blocks/footer.css);
 @import url(../blocks/main.css);
-
-@media screen and (max-width: 950px) {
-  .header {
-    max-width: 750px;
-  }
-
-  .main {
-    max-width: 750px;
-  }
-
-  .footer {
-    max-width: 750px;
-  }
-}
 
 @media screen and (max-width: 650px) and (min-width: 340px) {
   .heading {

@@ -1,7 +1,12 @@
-.cards {
+.gallery {
+  padding-top: 51px;
+}
+
+.gallery__cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
   gap: 20px 17px;
-  padding-top: 51px;
+  padding: 0;
   justify-content: center;
+  margin: 0;
 }

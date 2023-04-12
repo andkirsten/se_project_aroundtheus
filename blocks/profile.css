@@ -68,3 +68,38 @@
 .profile__add-button:hover {
   opacity: 0.5;
 }
+
+@media screen and (max-width: 650px) {
+  .profile {
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .profile__profile-info {
+    justify-content: center;
+    padding-top: 26.25px;
+    padding-left: 0;
+  }
+
+  .profile__name {
+    font-size: 22px;
+  }
+
+  .profile__title {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .profile__edit-button {
+    height: 18px;
+    width: 18px;
+    background-size: 7.5px 7.5px;
+  }
+
+  .profile__add-button {
+    width: 100%;
+    max-width: 282px;
+    margin: auto;
+    margin-top: 36px;
+  }
+}

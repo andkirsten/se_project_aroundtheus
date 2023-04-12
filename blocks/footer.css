@@ -12,3 +12,16 @@
   line-height: 1.2;
   margin: 0;
 }
+
+@media screen and (max-width: 950px) {
+  .footer {
+    max-width: 750px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .footer {
+    max-width: 282px;
+    padding-top: 48px;
+  }
+}
