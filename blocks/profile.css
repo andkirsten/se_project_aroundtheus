@@ -102,11 +102,13 @@
 
   .profile__name {
     font-size: 22px;
+    max-width: 282px;
   }
 
   .profile__title {
     text-align: center;
     font-size: 14px;
+    max-width: 282px;
   }
 
   .profile__edit-button {

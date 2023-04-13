@@ -1,6 +1,6 @@
 .page {
   background-color: black;
-  background-size: auto;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
