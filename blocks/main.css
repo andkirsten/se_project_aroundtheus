@@ -12,7 +12,7 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 775px) {
   .main {
     max-width: 282px;
   }

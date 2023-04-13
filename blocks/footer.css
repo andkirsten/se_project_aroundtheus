@@ -20,9 +20,13 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 775px) {
   .footer {
     max-width: 282px;
     padding-top: 48px;
+  }
+
+  .footer__copyright {
+    font-size: 14px;
   }
 }

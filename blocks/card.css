@@ -4,7 +4,6 @@
   border-radius: 10px 10px 10px 10px;
   overflow: hidden;
   max-width: 282px;
-  height: 361px;
 }
 
 .card__image {
@@ -31,9 +30,10 @@
 }
 
 .card__like-button {
-  background-color: white;
+  background-color: transparent;
   border: none;
   padding: 0;
+  cursor: pointer;
 }
 
 .card__like-button:hover {

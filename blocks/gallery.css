@@ -1,7 +1,3 @@
-.gallery {
-  padding-top: 51px;
-}
-
 .gallery__cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
