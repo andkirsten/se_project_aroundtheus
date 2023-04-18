@@ -1,4 +1,4 @@
-initalCards = [
+const initalCards = [
   {
     name: "Myeongdong",
     link: URL("https://unsplash.com/photos/Erld-XTqXv0"),
