@@ -1,4 +1,4 @@
-const initalCards = [
+var initialCards = [
   {
     name: "Myeongdong",
     link: URL("https://unsplash.com/photos/Erld-XTqXv0"),
