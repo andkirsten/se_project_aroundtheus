@@ -41,6 +41,7 @@
   position: absolute;
   top: -45px;
   right: -45px;
+  cursor: pointer;
 }
 
 .modal__heading {
@@ -58,7 +59,7 @@
 }
 
 .modal__input {
-  font-family: "Inter";
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.2px;
@@ -85,6 +86,7 @@
   font-size: 18px;
   line-height: 1.2px;
   border: 0;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 775px) {

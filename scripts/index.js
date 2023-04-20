@@ -1,4 +1,4 @@
-var initialCards = [
+const initialCards = [
   {
     name: "Myeongdong",
     link: "./images/myeongdong.jpeg",
@@ -43,8 +43,37 @@ const cardList = document.querySelector("#card-list");
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
-function closeModal() {
-  profileEditModal.classList.remove("modal__opened");
+function openModal(modal) {
+  modal.classList.add("modal__opened");
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal__opened");
+}
+
+function fillProfileForm() {
+  profileNameInput.value = profileName.textContent;
+  profileTitleInput.value = profileTitle.textContent;
+  openModal(profileEditModal);
+}
+
+function createCard(card) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const imageElement = cardElement.querySelector("#card-image");
+  imageElement.src = card.link;
+  imageElement.alt = card.name;
+  const cardTitle = cardElement.querySelector("#card-title");
+  cardTitle.textContent = card.name;
+  return cardElement;
+}
+
+for (let i = 0; i < initialCards.length; i++) {
+  const newCard = createCard(initialCards[i]);
+}
+
+function renderCard(newCard) {
+  const cardElement = createCard(newCard);
+  cardList.prepend(cardElement);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -54,28 +83,21 @@ function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileName.textContent = profileNameInput.value;
   profileTitle.textContent = profileTitleInput.value;
-  closeModal();
+  closeModal(profileEditModal);
 }
 
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
 /* -------------------------------------------------------------------------- */
-profileEditBtn.addEventListener("click", () => {
-  profileNameInput.value = profileName.textContent;
-  profileTitleInput.value = profileTitle.textContent;
-  profileEditModal.classList.add("modal__opened");
+profileEditBtn.addEventListener("click", function () {
+  fillProfileForm();
+  openModal(profileEditModal);
 });
 
 profileEditCloseBtn.addEventListener("click", () => {
-  closeModal();
+  closeModal(profileEditModal);
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
-initialCards.forEach((card) => {
-  const cardClone = cardTemplate.cloneNode(true);
-  cardClone.querySelector("#card-image").setAttribute("src", card.link);
-  cardClone.querySelector("#card-image").setAttribute("alt", card.name);
-  cardClone.querySelector("#card-title").textContent = card.name;
-  cardList.appendChild(cardClone);
-});
+initialCards.forEach(renderCard);
