@@ -1,39 +1,27 @@
 var initialCards = [
   {
     name: "Myeongdong",
-    link: "https://unsplash.com/photos/Erld-XTqXv0",
+    link: "./images/myeongdong.jpeg",
   },
   {
     name: "Gyeongbukgong Palace",
-    link: "https://unsplash.com/photos/dNtwZ-VnZ30",
+    link: "./images/gyeongbukgong.jpg",
   },
   {
     name: "Namsan Tower",
-    link: "https://unsplash.com/photos/ku9Ftte6Ymo",
+    link: "./images/namsan.jpg",
   },
   {
     name: "Dongdaemun Design Plaza",
-    link: "https://unsplash.com/photos/W4qdDbv8QUM",
+    link: "./images/ddplaza.jpg",
   },
   {
     name: "Han River",
-    link: "https://unsplash.com/photos/WeWfpnynP9Y",
+    link: "./images/han.jpg",
   },
   {
     name: "Bukhansan National Park",
-    link: "https://unsplash.com/photos/ciyW1NqHLj8",
-  },
-  {
-    name: "Busan Book Street",
-    link: "https://unsplash.com/photos/olLVE0KlMyM",
-  },
-  {
-    name: "Manjanggul Cave",
-    link: "https://unsplash.com/photos/arFD2OAAdrQ",
-  },
-  {
-    name: "Starfield Coex Mall",
-    link: "https://unsplash.com/photos/jpeTs-VfP68",
+    link: "./images/bukhansan.jpg",
   },
 ];
 
