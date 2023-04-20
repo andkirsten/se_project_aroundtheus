@@ -59,10 +59,10 @@ function fillProfileForm() {
 
 function createCard(card) {
   const cardElement = cardTemplate.cloneNode(true);
-  const imageElement = cardElement.querySelector("#card-image");
+  const imageElement = cardElement.querySelector(".card__img");
   imageElement.src = card.link;
   imageElement.alt = card.name;
-  const cardTitle = cardElement.querySelector("#card-title");
+  const cardTitle = cardElement.querySelector(".card__title");
   cardTitle.textContent = card.name;
   return cardElement;
 }
