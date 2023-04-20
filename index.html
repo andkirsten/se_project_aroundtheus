@@ -27,14 +27,14 @@
             class="profile__image"
           />
           <div class="profile__profile-info">
-            <h1 class="profile__name">Jacques Cousteau</h1>
+            <h1 class="profile__name" id="profile-name">Jacques Cousteau</h1>
             <button
               id="profile-edit-button"
               class="profile__edit-button"
               type="button"
               aria-label="edit"
             ></button>
-            <p class="profile__title">Explorer</p>
+            <p class="profile__title" id="profile-title">Explorer</p>
           </div>
           <button
             class="profile__add-button"
@@ -44,132 +44,25 @@
         </section>
         <section class="gallery">
           <ul class="gallery__cards">
-            <li class="card">
-              <img
-                src="./images/yosemite.jpg"
-                alt="yosemite river trees and mountains"
-                class="card__image"
-              />
-              <div class="card__info">
-                <h2 class="card__title">Yosemite Valley</h2>
-                <button
-                  class="card__like-button"
-                  type="button"
-                  aria-label="like"
-                >
-                  <img
-                    src="./images/heart.svg"
-                    alt="heart icon"
-                    class="card__heart-vector"
-                  />
-                </button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/lake-louise.jpg"
-                alt="lake-louise"
-                class="card__image"
-              />
-              <div class="card__info">
-                <h2 class="card__title">Lake Louise</h2>
-                <button
-                  class="card__like-button"
-                  type="button"
-                  aria-label="like"
-                >
-                  <img
-                    src="./images/heart.svg"
-                    alt="heart icon"
-                    class="card__heart-vector"
-                  />
-                </button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/bald-mountains.jpg"
-                alt="bald mountains"
-                class="card__image"
-              />
-              <div class="card__info">
-                <h2 class="card__title">Bald Mountains</h2>
-                <button
-                  class="card__like-button"
-                  type="button"
-                  aria-label="like"
-                >
-                  <img
-                    src="./images/heart.svg"
-                    alt="heart icon"
-                    class="card__heart-vector"
-                  />
-                </button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/latemar.jpg"
-                alt="latemar mountains"
-                class="card__image"
-              />
-              <div class="card__info">
-                <h2 class="card__title">Latemar</h2>
-                <button
-                  class="card__like-button"
-                  type="button"
-                  aria-label="like"
-                >
-                  <img
-                    src="./images/heart.svg"
-                    alt="heart icon"
-                    class="card__heart-vector"
-                  />
-                </button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/vanoise.jpg"
-                alt="vanoise national park"
-                class="card__image"
-              />
-              <div class="card__info">
-                <h2 class="card__title">Vanoise National Park</h2>
-                <button
-                  class="card__like-button"
-                  type="button"
-                  aria-label="like"
-                >
-                  <img
-                    src="./images/heart.svg"
-                    alt="heart icon"
-                    class="card__heart-vector"
-                  />
-                </button>
-              </div>
-            </li>
-            <li class="card">
-              <img
-                src="./images/lago.jpg"
-                alt="Lago di braies"
-                class="card__image"
-              />
-              <div class="card__info">
-                <h2 class="card__title">Lago di Braies</h2>
-                <button
-                  class="card__like-button"
-                  type="button"
-                  aria-label="like"
-                >
-                  <img
-                    src="./images/heart.svg"
-                    alt="heart icon"
-                    class="card__heart-vector"
-                  />
-                </button>
-              </div>
-            </li>
+            <template id="card-template">
+              <li class="card">
+                <img src="" alt="" class="card__img" />
+                <div class="card__info">
+                  <h2 class="card__title"></h2>
+                  <button
+                    class="card__like-button"
+                    type="button"
+                    aria-label="like"
+                  >
+                    <img
+                      src="./images/heart.svg"
+                      alt="heart icon"
+                      class="card__heart-vector"
+                    />
+                  </button>
+                </div>
+              </li>
+            </template>
           </ul>
         </section>
       </main>
@@ -181,17 +74,19 @@
       <div class="modal__container">
         <button class="modal__close" id="profile-edit-close-button"></button>
         <p class="modal__heading">Edit Profile</p>
-        <form class="modal__form">
+        <form class="modal__form" id="profile-edit-form">
           <input
             type="text"
             name="name"
             class="modal__input"
+            id="profile-name-input"
             placeholder="Name"
           />
           <input
             type="text"
             name="title"
             class="modal__input"
+            id="profile-title-input"
             placeholder="About Me"
           />
           <button class="modal__save">Save</button>

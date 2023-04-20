@@ -37,17 +37,48 @@ var initialCards = [
   },
 ];
 
-// Elements
+/* -------------------------------------------------------------------------- */
+/*                                   Elements                                   */
+/* -------------------------------------------------------------------------- */
 const profileEditBtn = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditCloseBtn = document.querySelector(
   "#profile-edit-close-button"
 );
+const profileName = document.querySelector("#profile-name");
+const profileTitle = document.querySelector("#profile-title");
+const profileNameInput = document.querySelector("#profile-name-input");
+const profileTitleInput = document.querySelector("#profile-title-input");
+const profileEditForm = document.querySelector("#profile-edit-form");
 
+/* -------------------------------------------------------------------------- */
+/*                                  Functions                                 */
+/* -------------------------------------------------------------------------- */
+function closeModal() {
+  profileEditModal.classList.remove("modal__opened");
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Event Handlers                               */
+/* -------------------------------------------------------------------------- */
+function handleProfileEditSubmit(e) {
+  e.preventDefault();
+  profileName.textContent = profileNameInput.value;
+  profileTitle.textContent = profileTitleInput.value;
+  closeModal();
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Event Listeners                              */
+/* -------------------------------------------------------------------------- */
 profileEditBtn.addEventListener("click", () => {
+  profileNameInput.value = profileName.textContent;
+  profileTitleInput.value = profileTitle.textContent;
   profileEditModal.classList.add("modal__opened");
 });
 
 profileEditCloseBtn.addEventListener("click", () => {
-  profileEditModal.classList.remove("modal__opened");
+  closeModal();
 });
+
+profileEditForm.addEventListener("submit", handleProfileEditSubmit);
