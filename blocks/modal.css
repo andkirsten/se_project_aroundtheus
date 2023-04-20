@@ -44,6 +44,10 @@
   cursor: pointer;
 }
 
+.modal__close:hover {
+  opacity: 0.6;
+}
+
 .modal__heading {
   font-family: "Inter", sans-serif;
   font-weight: 900;
@@ -87,6 +91,10 @@
   line-height: 1.2px;
   border: 0;
   cursor: pointer;
+}
+
+.modal__save:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 775px) {
