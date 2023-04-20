@@ -1,39 +1,27 @@
 var initialCards = [
   {
     name: "Myeongdong",
-    link: "https://unsplash.com/photos/Erld-XTqXv0",
+    link: "./images/myeongdong.jpeg",
   },
   {
     name: "Gyeongbukgong Palace",
-    link: "https://unsplash.com/photos/dNtwZ-VnZ30",
+    link: "./images/gyongbukgongpalace.jpg",
   },
   {
     name: "Namsan Tower",
-    link: "https://unsplash.com/photos/ku9Ftte6Ymo",
+    link: "./images/namsan.jpg",
   },
   {
     name: "Dongdaemun Design Plaza",
-    link: "https://unsplash.com/photos/W4qdDbv8QUM",
-  },
-  {
-    name: "Han River",
-    link: "https://unsplash.com/photos/WeWfpnynP9Y",
-  },
-  {
-    name: "Bukhansan National Park",
-    link: "https://unsplash.com/photos/ciyW1NqHLj8",
-  },
-  {
-    name: "Busan Book Street",
-    link: "https://unsplash.com/photos/olLVE0KlMyM",
+    link: "./images/ddplaza.jpg",
   },
   {
     name: "Manjanggul Cave",
-    link: "https://unsplash.com/photos/arFD2OAAdrQ",
+    link: "./images/manjanggulcave.jpg",
   },
   {
     name: "Starfield Coex Mall",
-    link: "https://unsplash.com/photos/jpeTs-VfP68",
+    link: "./images/coex.jpg",
   },
 ];
 
@@ -50,7 +38,8 @@ const profileTitle = document.querySelector("#profile-title");
 const profileNameInput = document.querySelector("#profile-name-input");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileEditForm = document.querySelector("#profile-edit-form");
-
+const cardTemplate = document.querySelector("#card-template").content;
+const cardList = document.querySelector("#card-list");
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
@@ -82,3 +71,11 @@ profileEditCloseBtn.addEventListener("click", () => {
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+
+initialCards.forEach((card) => {
+  const cardClone = cardTemplate.cloneNode(true);
+  cardClone.querySelector("#card-image").setAttribute("src", card.link);
+  cardClone.querySelector("#card-image").setAttribute("alt", card.name);
+  cardClone.querySelector("#card-title").textContent = card.name;
+  cardList.appendChild(cardClone);
+});

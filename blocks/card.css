@@ -6,7 +6,7 @@
   max-width: 282px;
 }
 
-.card__image {
+.card__img {
   height: 282px;
   width: auto;
 }
@@ -30,6 +30,9 @@
 }
 
 .card__like-button {
+  background-image: url(../images/heart.svg);
+  background-position: center;
+  background-repeat: no-repeat;
   background-color: transparent;
   border: none;
   padding: 0;

@@ -43,27 +43,7 @@
           ></button>
         </section>
         <section class="gallery">
-          <ul class="gallery__cards">
-            <template id="card-template">
-              <li class="card">
-                <img src="" alt="" class="card__img" />
-                <div class="card__info">
-                  <h2 class="card__title"></h2>
-                  <button
-                    class="card__like-button"
-                    type="button"
-                    aria-label="like"
-                  >
-                    <img
-                      src="./images/heart.svg"
-                      alt="heart icon"
-                      class="card__heart-vector"
-                    />
-                  </button>
-                </div>
-              </li>
-            </template>
-          </ul>
+          <ul class="gallery__cards" id="card-list"></ul>
         </section>
       </main>
       <section class="footer">
@@ -93,6 +73,21 @@
         </form>
       </div>
     </div>
+
+    <template id="card-template">
+      <li class="card">
+        <img src="${link}" alt="${name}" class="card__img" id="card-image" />
+        <div class="card__info">
+          <h2 class="card__title" id="card-title">${name}</h2>
+          <button
+            class="card__like-button"
+            type="button"
+            aria-label="like"
+          ></button>
+        </div>
+      </li>
+    </template>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>
