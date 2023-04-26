@@ -38,6 +38,14 @@ const profileTitle = document.querySelector("#profile-title");
 const profileNameInput = document.querySelector("#profile-name-input");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileEditForm = document.querySelector("#profile-edit-form");
+const addCardBtn = document.querySelector("#new-card-button");
+const addCardModal = document.querySelector("#new-card-modal");
+const addCardCloseBtn = document.querySelector("#new-card-close-button");
+const addCardForm = document.querySelector("#new-card-form");
+const addCardTitle = document.querySelector("#new-card-title");
+const addCardURL = document.querySelector("#new-card-url");
+const addTitleInput = document.querySelector("#new-card-title-input");
+const addURLInput = document.querySelector("#new-card-url-input");
 const cardTemplate = document.querySelector("#card-template").content;
 const cardList = document.querySelector("#card-list");
 /* -------------------------------------------------------------------------- */
@@ -86,6 +94,24 @@ function handleProfileEditSubmit(e) {
   closeModal(profileEditModal);
 }
 
+function handleAddCardSubmit(e) {
+  e.preventDefault();
+  const name = addTitleInput.value;
+  const link = addURLInput.value;
+  renderCard({ name, link });
+  closeModal(addCardModal);
+}
+
+function createCard(card) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const imageElement = cardElement.querySelector(".card__img");
+  imageElement.src = card.link;
+  imageElement.alt = card.name;
+  const cardTitle = cardElement.querySelector(".card__title");
+  cardTitle.textContent = card.name;
+  return cardElement;
+}
+
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
 /* -------------------------------------------------------------------------- */
@@ -99,5 +125,15 @@ profileEditCloseBtn.addEventListener("click", () => {
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
+
+addCardBtn.addEventListener("click", () => {
+  openModal(addCardModal);
+});
+
+addCardCloseBtn.addEventListener("click", () => {
+  closeModal(addCardModal);
+});
+
+addCardForm.addEventListener("submit", handleAddCardSubmit);
 
 initialCards.forEach(renderCard);
