@@ -6,12 +6,18 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  display: none;
+  display: flex;
   justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, 0.6s, opacity 0.6s;
+  pointer-events: none;
 }
 
 .modal__opened {
-  display: flex;
+  pointer-events: auto;
+  visibility: visible;
+  opacity: 1;
 }
 
 .modal__container {
@@ -26,6 +32,7 @@
   display: flex;
   flex-direction: column;
   padding: 35px;
+  transform: scale(0.9);
 }
 
 .modal__photo-container {
@@ -35,6 +42,7 @@
   border-radius: 0px;
   display: flex;
   flex-direction: column;
+  transform: scale(0.9);
 }
 
 .modal .modal__close {
@@ -42,7 +50,7 @@
   background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
-  transform: rotateX("45");
+  transform: rotateX(45deg);
   height: 40px;
   width: 40px;
   padding: 0;
@@ -67,8 +75,6 @@
 }
 
 .modal__photo {
-  /* height: 540px;
-  width: auto; */
   max-width: 75vw;
   max-height: 75vh;
 }
