@@ -4,11 +4,33 @@
   border-radius: 10px 10px 10px 10px;
   overflow: hidden;
   max-width: 282px;
+  position: relative;
 }
 
 .card__img {
   height: 282px;
   width: auto;
+}
+
+.card__remove-button {
+  position: absolute;
+  z-index: 2;
+  top: 18px;
+  right: 15px;
+  background-image: url(../images/Trash.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  max-width: 18px;
+  height: 19.3px;
+  width: 100%;
+}
+
+.card__remove-button:hover {
+  opacity: 0.6;
 }
 
 .card__info {
@@ -43,4 +65,8 @@
 
 .card__like-button:hover {
   opacity: 0.5;
+}
+
+.card__like-button_active {
+  background-image: url(../images/filled-heart.png);
 }

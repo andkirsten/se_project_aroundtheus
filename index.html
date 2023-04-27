@@ -111,9 +111,26 @@
       </div>
     </div>
 
+    <div class="modal" id="photo-modal">
+      <div class="modal__photo-container">
+        <button
+          class="modal__close"
+          type="button"
+          id="photo-modal-close-button"
+        ></button>
+        <img src="" alt="" class="modal__photo" />
+        <p class="modal__photo-caption"></p>
+      </div>
+    </div>
+
     <template id="card-template">
       <li class="card">
         <img src="${link}" alt="${name}" class="card__img" />
+        <button
+          class="card__remove-button"
+          type="button"
+          aria-label="remove"
+        ></button>
         <div class="card__info">
           <h2 class="card__title">${name}</h2>
           <button
