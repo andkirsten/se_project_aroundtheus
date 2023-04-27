@@ -62,22 +62,17 @@ const cardList = document.querySelector("#card-list");
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
 function openModal(modal) {
-  modal.classList.add("modal__opened");
+  modal.classList.add("modal_opened");
 }
 
 function closeModal(modal) {
-  modal.classList.remove("modal__opened");
+  modal.classList.remove("modal_opened");
 }
 
 function fillProfileForm() {
   profileNameInput.value = profileName.textContent;
   profileTitleInput.value = profileTitle.textContent;
   openModal(profileEditModal);
-}
-
-function fillPhotoModal() {
-  modalPhoto.src = card.link;
-  modalPhoto.alt = card.name;
 }
 
 function createCard(card) {
@@ -105,10 +100,6 @@ function createCard(card) {
   return cardElement;
 }
 
-for (let i = 0; i < initialCards.length; i++) {
-  const newCard = createCard(initialCards[i]);
-}
-
 function renderCard(newCard) {
   const cardElement = createCard(newCard);
   cardList.prepend(cardElement);
@@ -129,16 +120,8 @@ function handleAddCardSubmit(e) {
   const name = addTitleInput.value;
   const link = addURLInput.value;
   renderCard({ name, link });
+  e.target.reset();
   closeModal(addCardModal);
-}
-
-function likeButtonToggler() {
-  likeBtn.classList.toggle("card__like-button_active");
-}
-
-function removeCard() {
-  console.log(removeBtn);
-  cardElement.remove();
 }
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
@@ -172,11 +155,3 @@ photoModalCloseBtn.addEventListener("click", () => {
 });
 
 initialCards.forEach(renderCard);
-
-const cards = document.querySelectorAll(".card");
-cards.forEach((card) => {
-  const removeBtn = card.querySelector(".card__remove-button");
-  removeBtn.addEventListener("click", () => {
-    card.remove();
-  });
-});

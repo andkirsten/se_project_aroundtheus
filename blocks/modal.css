@@ -14,7 +14,7 @@
   pointer-events: none;
 }
 
-.modal__opened {
+.modal_opened {
   pointer-events: auto;
   visibility: visible;
   opacity: 1;
@@ -50,7 +50,6 @@
   background-color: transparent;
   background-size: contain;
   background-repeat: no-repeat;
-  transform: rotateX(45deg);
   height: 40px;
   width: 40px;
   padding: 0;
