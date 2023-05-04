@@ -165,7 +165,7 @@
   .modal__container {
     margin-top: 123px;
     max-width: 238px;
-    max-height: 272px;
+    max-height: 330px;
     padding: 25px 22px;
   }
 
@@ -186,7 +186,7 @@
   }
 
   .modal__submit {
-    margin-top: 45px;
+    margin-top: 31px;
     font-size: 14px;
   }
 }

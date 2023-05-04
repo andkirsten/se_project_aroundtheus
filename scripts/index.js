@@ -63,10 +63,16 @@ const cardList = document.querySelector("#card-list");
 /* -------------------------------------------------------------------------- */
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener("keydown", function (evt) {
+    closeOnEscape(evt, modal);
+  });
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", function (evt) {
+    closeOnEscape(evt, modal);
+  });
 }
 
 function fillProfileForm() {
@@ -123,6 +129,21 @@ function handleAddCardSubmit(e) {
   e.target.reset();
   closeModal(addCardModal);
 }
+
+function closeOnEscape(evt, modal) {
+  if (evt.key === "Escape") {
+    closeModal(modal);
+  }
+}
+
+function closeOnClickOut(evt, modal) {
+  if (
+    evt.target.classList.contains("modal") ||
+    evt.target.classList.contains("modal__close")
+  ) {
+    closeModal(modal);
+  }
+}
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
 /* -------------------------------------------------------------------------- */
@@ -134,8 +155,8 @@ profileEditBtn.addEventListener("click", function () {
   openModal(profileEditModal);
 });
 
-profileEditCloseBtn.addEventListener("click", () => {
-  closeModal(profileEditModal);
+profileEditModal.addEventListener("click", function (evt) {
+  closeOnClickOut(evt, profileEditModal);
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
@@ -145,14 +166,14 @@ addCardBtn.addEventListener("click", () => {
   openModal(addCardModal);
 });
 
-addCardCloseBtn.addEventListener("click", () => {
-  closeModal(addCardModal);
+addCardModal.addEventListener("click", function (evt) {
+  closeOnClickOut(evt, addCardModal);
 });
 
 addCardForm.addEventListener("submit", handleAddCardSubmit);
 
-photoModalCloseBtn.addEventListener("click", () => {
-  closeModal(photoModal);
+//Photo Modal Listeners
+photoModal.addEventListener("click", function (evt) {
+  closeOnClickOut(evt, photoModal);
 });
-
 initialCards.forEach(renderCard);
