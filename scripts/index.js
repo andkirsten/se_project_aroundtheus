@@ -126,6 +126,7 @@ function handleAddCardSubmit(e) {
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
 /* -------------------------------------------------------------------------- */
+//Modal Listeners
 
 //Profile Listeners
 profileEditBtn.addEventListener("click", function () {
