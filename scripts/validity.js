@@ -1,6 +1,3 @@
-// enabling validation by calling enableValidation()
-// pass all the settings on call
-
 const showInputError = (
   formEl,
   inputEl,
@@ -39,16 +36,17 @@ const toggleButtonState = (inputEls, buttonEl, { inactiveButtonClass }) => {
   if (hasInvalidInput(inputEls)) {
     console.log(buttonEl);
     buttonEl.classList.add(inactiveButtonClass);
+    buttonEl.disabled = true;
   } else {
     console.log("remove" + buttonEl);
     buttonEl.classList.remove(inactiveButtonClass);
+    buttonEl.disabled = false;
   }
 };
 
 function setEventListeners(formEl, options) {
-  const { inputSelector } = options;
+  const { inputSelector, submitButtonSelector } = options;
   const inputEls = [...formEl.querySelectorAll(options.inputSelector)];
-  const { submitButtonSelector } = options;
   const buttonEl = formEl.querySelector(options.submitButtonSelector);
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", function () {
@@ -64,7 +62,6 @@ function enableValidation(options) {
     formEl.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-
     setEventListeners(formEl, config);
   });
 }

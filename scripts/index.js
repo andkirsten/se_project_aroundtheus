@@ -63,16 +63,12 @@ const cardList = document.querySelector("#card-list");
 /* -------------------------------------------------------------------------- */
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  document.addEventListener("keydown", function (evt) {
-    closeOnEscape(evt, modal);
-  });
+  document.addEventListener("keydown", closeOnEscape);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", function (evt) {
-    closeOnEscape(evt, modal);
-  });
+  document.removeEventListener("keydown", closeOnEscape);
 }
 
 function fillProfileForm() {
@@ -127,21 +123,24 @@ function handleAddCardSubmit(e) {
   const link = addURLInput.value;
   renderCard({ name, link });
   e.target.reset();
+  addCardCloseBtn.disabled = true;
   closeModal(addCardModal);
 }
 
-function closeOnEscape(evt, modal) {
+function closeOnEscape(evt) {
+  const openedModal = document.querySelector(".modal_opened");
   if (evt.key === "Escape") {
-    closeModal(modal);
+    closeModal(openedModal);
   }
 }
 
-function closeOnClickOut(evt, modal) {
+function closeOnClickOut(evt) {
+  const openedModal = document.querySelector(".modal_opened");
   if (
     evt.target.classList.contains("modal") ||
     evt.target.classList.contains("modal__close")
   ) {
-    closeModal(modal);
+    closeModal(openedModal);
   }
 }
 /* -------------------------------------------------------------------------- */
@@ -155,9 +154,7 @@ profileEditBtn.addEventListener("click", function () {
   openModal(profileEditModal);
 });
 
-profileEditModal.addEventListener("click", function (evt) {
-  closeOnClickOut(evt, profileEditModal);
-});
+profileEditModal.addEventListener("click", closeOnClickOut);
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
@@ -166,14 +163,11 @@ addCardBtn.addEventListener("click", () => {
   openModal(addCardModal);
 });
 
-addCardModal.addEventListener("click", function (evt) {
-  closeOnClickOut(evt, addCardModal);
-});
+addCardModal.addEventListener("click", closeOnClickOut);
 
 addCardForm.addEventListener("submit", handleAddCardSubmit);
 
 //Photo Modal Listeners
-photoModal.addEventListener("click", function (evt) {
-  closeOnClickOut(evt, photoModal);
-});
+photoModal.addEventListener("click", closeOnClickOut);
+
 initialCards.forEach(renderCard);
