@@ -47,6 +47,7 @@ const addCardCloseBtn = document.querySelector("#new-card-close-button");
 const addCardForm = document.querySelector("#new-card-form");
 const addTitleInput = document.querySelector("#new-card-title-input");
 const addURLInput = document.querySelector("#new-card-url-input");
+const addCardSubmitBtn = document.querySelector("#new-card-submit-button");
 
 //Photo Modal Elements
 const photoModal = document.querySelector("#photo-modal");
@@ -57,6 +58,7 @@ const photoModalCloseBtn = document.querySelector("#photo-modal-close-button");
 //General Elements
 const cardTemplate = document.querySelector("#card-template").content;
 const cardList = document.querySelector("#card-list");
+const modalEls = document.querySelectorAll(".modal");
 
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
@@ -123,38 +125,40 @@ function handleAddCardSubmit(e) {
   const link = addURLInput.value;
   renderCard({ name, link });
   e.target.reset();
-  addCardCloseBtn.disabled = true;
+  console.log(addCardSubmitBtn);
+  addCardSubmitBtn.disabled = true;
+  addCardSubmitBtn.classList.add("modal__submit_disabled");
   closeModal(addCardModal);
 }
 
 function closeOnEscape(evt) {
-  const openedModal = document.querySelector(".modal_opened");
   if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
     closeModal(openedModal);
   }
 }
 
 function closeOnClickOut(evt) {
-  const openedModal = document.querySelector(".modal_opened");
   if (
     evt.target.classList.contains("modal") ||
     evt.target.classList.contains("modal__close")
   ) {
-    closeModal(openedModal);
+    closeModal(evt.currentTarget);
   }
 }
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
 /* -------------------------------------------------------------------------- */
 //Modal Listeners
+modalEls.forEach((modal) => {
+  modal.addEventListener("click", closeOnClickOut);
+});
 
 //Profile Listeners
 profileEditBtn.addEventListener("click", function () {
   fillProfileForm();
   openModal(profileEditModal);
 });
-
-profileEditModal.addEventListener("click", closeOnClickOut);
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
@@ -163,11 +167,6 @@ addCardBtn.addEventListener("click", () => {
   openModal(addCardModal);
 });
 
-addCardModal.addEventListener("click", closeOnClickOut);
-
 addCardForm.addEventListener("submit", handleAddCardSubmit);
-
-//Photo Modal Listeners
-photoModal.addEventListener("click", closeOnClickOut);
 
 initialCards.forEach(renderCard);

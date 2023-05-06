@@ -149,7 +149,7 @@
   cursor: pointer;
 }
 
-.modal__submit:hover {
+.modal__submit:not([disabled]):hover {
   opacity: 0.8;
 }
 
