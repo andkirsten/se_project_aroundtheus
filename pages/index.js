@@ -82,7 +82,6 @@ const settings = {
 function fillProfileForm() {
   profileNameInput.value = profileName.textContent;
   profileTitleInput.value = profileTitle.textContent;
-  openModal(profileEditModal);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -102,8 +101,6 @@ function handleAddCardSubmit(e) {
   const link = addURLInput.value;
   renderCard({ name, link });
   e.target.reset();
-  console.log(addCardSubmitBtn);
-  addCardSubmitBtn.disabled = true;
   addCardSubmitBtn.classList.add("modal__submit_disabled");
   closeModal(addCardModal);
 }

@@ -8,11 +8,9 @@ export default class Card {
   }
 
   _setEventListeners() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .addEventListener("click", () => {
-        this._handleLikeButton();
-      });
+    this._likeBtn.addEventListener("click", () => {
+      this._handleLikeButton();
+    });
     this._cardElement
       .querySelector(".card__remove-button")
       .addEventListener("click", () => {
@@ -33,24 +31,26 @@ export default class Card {
     openModal(photoModal);
   }
 
-  _handleLikeButton() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_active");
-  }
+  _handleLikeButton = () => {
+    this._likeBtn.classList.toggle("card__like-button_active");
+  };
 
-  createCard() {
+  _getElement() {
     this._cardElement = document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
       .cloneNode(true);
-    console.log(this._cardElement);
+    return this._cardElement;
+  }
+
+  createCard() {
+    this._cardElement = this._getElement();
     this._imageEl = this._cardElement.querySelector(".card__img");
     this._imageEl.src = this._link;
     this._imageEl.alt = this._name;
-    this._imageEl.textContent = this._name;
-    this._cardElement.querySelector(".card__title").textContent = this._name;
-
+    this._cardTitle = _cardElement.querySelector(".card__title").textContent;
+    this._cardTitle = this._name;
+    this._likeBtn = this._cardElement.querySelector(".card__like-button");
     this._setEventListeners();
 
     return this._cardElement;
@@ -58,5 +58,6 @@ export default class Card {
 
   _handleRemoveCard() {
     this._cardElement.remove();
+    this._cardElement = null;
   }
 }

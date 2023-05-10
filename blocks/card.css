@@ -10,6 +10,7 @@
 .card__img {
   height: 282px;
   width: auto;
+  cursor: pointer;
 }
 
 .card__remove-button {
