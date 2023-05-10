@@ -1,3 +1,7 @@
+import { openModal, closeModal } from "../utils/utils.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+
 const initialCards = [
   {
     name: "Myeongdong",
@@ -25,6 +29,15 @@ const initialCards = [
   },
 ];
 
+const cardData = {
+  name: "Myeongdong",
+  link: "./images/myeongdong.jpeg",
+};
+
+const editFormValidator = new FormValidator();
+editFormValidator.enableValidation();
+
+const card = new Card(cardData);
 /* -------------------------------------------------------------------------- */
 /*                                   Elements                                   */
 /* -------------------------------------------------------------------------- */
@@ -58,7 +71,7 @@ const photoModalCloseBtn = document.querySelector("#photo-modal-close-button");
 //General Elements
 const cardTemplate = document.querySelector("#card-template").content;
 const cardList = document.querySelector("#card-list");
-const modalEls = document.querySelectorAll(".modal");
+// const modalEls = document.querySelectorAll(".modal");
 
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
@@ -131,28 +144,28 @@ function handleAddCardSubmit(e) {
   closeModal(addCardModal);
 }
 
-function closeOnEscape(evt) {
-  if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal_opened");
-    closeModal(openedModal);
-  }
-}
+// function closeOnEscape(evt) {
+//   if (evt.key === "Escape") {
+//     const openedModal = document.querySelector(".modal_opened");
+//     closeModal(openedModal);
+//   }
+// }
 
-function closeOnClickOut(evt) {
-  if (
-    evt.target.classList.contains("modal") ||
-    evt.target.classList.contains("modal__close")
-  ) {
-    closeModal(evt.currentTarget);
-  }
-}
+// function closeOnClickOut(evt) {
+//   if (
+//     evt.target.classList.contains("modal") ||
+//     evt.target.classList.contains("modal__close")
+//   ) {
+//     closeModal(evt.currentTarget);
+//   }
+// }
 /* -------------------------------------------------------------------------- */
 /*                               Event Listeners                              */
 /* -------------------------------------------------------------------------- */
-//Modal Listeners
-modalEls.forEach((modal) => {
-  modal.addEventListener("click", closeOnClickOut);
-});
+// //Modal Listeners
+// modalEls.forEach((modal) => {
+//   modal.addEventListener("click", closeOnClickOut);
+// });
 
 //Profile Listeners
 profileEditBtn.addEventListener("click", function () {
