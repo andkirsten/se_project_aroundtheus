@@ -36,11 +36,10 @@ export default class Card {
   };
 
   _getElement() {
-    this._cardElement = document
+    return document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
       .cloneNode(true);
-    return this._cardElement;
   }
 
   createCard() {

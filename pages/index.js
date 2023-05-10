@@ -101,7 +101,6 @@ function handleAddCardSubmit(e) {
   const link = addURLInput.value;
   renderCard({ name, link });
   e.target.reset();
-  addCardSubmitBtn.classList.add("modal__submit_disabled");
   closeModal(addCardModal);
 }
 
