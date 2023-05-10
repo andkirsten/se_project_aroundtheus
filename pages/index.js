@@ -101,6 +101,7 @@ function handleAddCardSubmit(e) {
   const link = addURLInput.value;
   renderCard({ name, link });
   e.target.reset();
+  addCardValidator.toggleButtonState();
   closeModal(addCardModal);
 }
 
