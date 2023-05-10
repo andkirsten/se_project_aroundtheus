@@ -1,3 +1,5 @@
+import { openModal } from "../utils/utils.js";
+
 export default class Card {
   constructor({ name, link }, cardSelector) {
     this._name = name;
@@ -16,16 +18,19 @@ export default class Card {
       .addEventListener("click", () => {
         this._handleRemoveCard();
       });
-    this._cardElement
-      .querySelector(".card__img")
-      .addEventListener("click", () => {
-        this.handleImageClick();
-      });
+    this._imageEl.addEventListener("click", () => {
+      this._handleImageClick();
+    });
   }
 
   _handleImageClick() {
-    this._cardElement;
-    this._cardElement = null;
+    const photoModal = document.querySelector("#photo-modal");
+    const modalPhoto = document.querySelector(".modal__photo");
+    const modalCaption = document.querySelector(".modal__photo-caption");
+    modalPhoto.src = this._link;
+    modalPhoto.alt = this._name;
+    modalCaption.textContent = this._name;
+    openModal(photoModal);
   }
 
   _handleLikeButton() {
@@ -34,16 +39,24 @@ export default class Card {
       .classList.toggle("card__like-button_active");
   }
 
-  _handleRemoveCard() {
-    this._cardElement.remove();
-  }
-
   createCard() {
     this._cardElement = document
       .querySelector(this._cardSelector)
-      .querySelector(".card")
-      .content.cloneNode(true);
+      .content.querySelector(".card")
+      .cloneNode(true);
+    console.log(this._cardElement);
+    this._imageEl = this._cardElement.querySelector(".card__img");
+    this._imageEl.src = this._link;
+    this._imageEl.alt = this._name;
+    this._imageEl.textContent = this._name;
+    this._cardElement.querySelector(".card__title").textContent = this._name;
 
     this._setEventListeners();
+
+    return this._cardElement;
+  }
+
+  _handleRemoveCard() {
+    this._cardElement.remove();
   }
 }
