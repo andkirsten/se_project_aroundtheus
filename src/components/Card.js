@@ -1,11 +1,10 @@
 import PopupWithImage from "./PopupWithImage.js";
 
 export default class Card {
-  constructor({ name, link }, cardSelector, handleCardClick) {
+  constructor({ name, link }, cardSelector) {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
-    this.handleCardClick = handleCardClick;
   }
 
   _setEventListeners() {
@@ -15,7 +14,6 @@ export default class Card {
     this._cardElement
       .querySelector(".card__remove-button")
       .addEventListener("click", () => {
-        console.log(this.handleCardClick);
         this._handleRemoveCard();
       });
     const imagePopup = new PopupWithImage(

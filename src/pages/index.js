@@ -65,9 +65,7 @@ function handleAddCardSubmit(e) {
 }
 
 function renderCard(item) {
-  const newCard = new Card(item, "#card-template", (card) => {
-    console.log("card");
-  });
+  const newCard = new Card(item, "#card-template");
   const card = newCard.createCard();
   cardList.prepend(card);
 }
