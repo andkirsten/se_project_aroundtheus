@@ -16,14 +16,14 @@ export default class Card {
       .querySelector(".card__remove-button")
       .addEventListener("click", () => {
         console.log(this.handleCardClick);
-        this.handleRemoveCard();
+        this._handleRemoveCard();
       });
     const imagePopup = new PopupWithImage(
-      this._name,
-      this._link,
-      "#photo__modal"
+      { name: this._name, link: this._link },
+      "#photo-modal"
     );
-    this._cardElement.addEventListener("click", () => {
+
+    this._imageEl.addEventListener("click", () => {
       imagePopup.open();
     });
   }
