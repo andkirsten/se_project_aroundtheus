@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="pages/index.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <meta
       name="description"
@@ -17,12 +16,16 @@
   <body>
     <div class="page">
       <header class="header" id="header">
-        <img class="logo" src="./images/logo.svg" alt="around the US logo" />
+        <img
+          class="logo"
+          src="<%=require('./images/logo.svg')%>"
+          alt="around the US logo"
+        />
       </header>
       <main class="main">
         <section class="profile">
           <img
-            src="./images/jacques-cousteau.jpg"
+            src="<%=require('./images/jacques-cousteau.jpg')%>"
             alt="jacques-cousteau"
             class="profile__image"
           />
@@ -116,7 +119,7 @@
           <div class="modal__input-group">
             <input
               type="url"
-              name="image-url"
+              name="imageUrl"
               class="modal__input"
               id="new-card-url-input"
               placeholder="Image URL"
@@ -165,6 +168,5 @@
         </div>
       </li>
     </template>
-    <script type="module" src="./pages/index.js" defer></script>
   </body>
 </html>

@@ -1,10 +1,11 @@
-import { openModal } from "../utils/utils.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 export default class Card {
-  constructor({ name, link }, cardSelector) {
+  constructor({ name, link }, cardSelector, handleCardClick) {
     this._name = name;
     this._link = link;
     this._cardSelector = cardSelector;
+    this.handleCardClick = handleCardClick;
   }
 
   _setEventListeners() {
@@ -14,21 +15,17 @@ export default class Card {
     this._cardElement
       .querySelector(".card__remove-button")
       .addEventListener("click", () => {
-        this._handleRemoveCard();
+        console.log(this.handleCardClick);
+        this.handleRemoveCard();
       });
-    this._imageEl.addEventListener("click", () => {
-      this._handleImageClick();
+    const imagePopup = new PopupWithImage(
+      this._name,
+      this._link,
+      "#photo__modal"
+    );
+    this._cardElement.addEventListener("click", () => {
+      imagePopup.open();
     });
-  }
-
-  _handleImageClick() {
-    const photoModal = document.querySelector("#photo-modal");
-    const modalPhoto = document.querySelector(".modal__photo");
-    const modalCaption = document.querySelector(".modal__photo-caption");
-    modalPhoto.src = this._link;
-    modalPhoto.alt = this._name;
-    modalCaption.textContent = this._name;
-    openModal(photoModal);
   }
 
   _handleLikeButton = () => {
