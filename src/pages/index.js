@@ -13,6 +13,7 @@ import {
   profileNameInput,
   profileTitleInput,
   initialCards,
+  profileInputData,
   cardTemplate,
   addTitleInput,
   addURLInput,
@@ -36,8 +37,11 @@ function fillProfileForm() {
   profileTitleInput.value = userData.title;
 }
 
-function handleProfileEditSubmit(e) {
-  userInfo.setUserInfo(profileNameInput.value, profileTitleInput.value);
+function handleProfileEditSubmit({ name, title }) {
+  userInfo.setUserInfo(
+    (name = profileNameInput.value),
+    (title = profileTitleInput.value)
+  );
   profilePopup.close();
 }
 
@@ -53,9 +57,9 @@ profileEditBtn.addEventListener("click", function () {
 const addCardPopup = new PopupWithForm("#new-card-modal", handleAddCardSubmit);
 
 //functions
-function handleAddCardSubmit(e) {
-  const name = addTitleInput.value;
-  const link = addURLInput.value;
+function handleAddCardSubmit({ name, link }) {
+  name = addTitleInput.value;
+  link = addURLInput.value;
   const newCardData = { name, link };
   addCardPopup.close();
   cardSection.addItem(newCardData);
@@ -69,6 +73,7 @@ function renderCard(item) {
 
 //event listeners
 addCardBtn.addEventListener("click", () => {
+  addCardValidator.toggleButtonState();
   addCardPopup.open();
 });
 

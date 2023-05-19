@@ -58,6 +58,7 @@ export const addCardCloseBtn = document.querySelector("#new-card-close-button");
 export const addCardForm = document.querySelector("#new-card-form");
 export const addTitleInput = document.querySelector("#new-card-title-input");
 export const addURLInput = document.querySelector("#new-card-url-input");
+
 export const addCardSubmitBtn = document.querySelector(
   "#new-card-submit-button"
 );
