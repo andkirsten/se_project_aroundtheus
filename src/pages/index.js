@@ -14,7 +14,9 @@ import {
   profileTitleInput,
   initialCards,
   cardTemplate,
-} from "../components/constants.js";
+  addTitleInput,
+  addURLInput,
+} from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
 
 /* -------------------------------------------------------------------------- */
@@ -35,7 +37,6 @@ function fillProfileForm() {
 }
 
 function handleProfileEditSubmit(e) {
-  e.preventDefault();
   userInfo.setUserInfo(profileNameInput.value, profileTitleInput.value);
   profilePopup.close();
 }
@@ -46,8 +47,6 @@ profileEditBtn.addEventListener("click", function () {
   profilePopup.open();
 });
 
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
-
 /* -------------------------------------------------------------------------- */
 /*                                  Add Card                                  */
 /* -------------------------------------------------------------------------- */
@@ -55,11 +54,9 @@ const addCardPopup = new PopupWithForm("#new-card-modal", handleAddCardSubmit);
 
 //functions
 function handleAddCardSubmit(e) {
-  e.preventDefault();
-  const name = addCardPopup.getInputValues().title;
-  const link = addCardPopup.getInputValues().imageUrl;
+  const name = addTitleInput.value;
+  const link = addURLInput.value;
   const newCardData = { name, link };
-  addCardValidator.toggleButtonState();
   addCardPopup.close();
   cardSection.addItem(newCardData);
 }
@@ -74,8 +71,6 @@ function renderCard(item) {
 addCardBtn.addEventListener("click", () => {
   addCardPopup.open();
 });
-
-addCardForm.addEventListener("submit", handleAddCardSubmit);
 
 /* -------------------------------------------------------------------------- */
 /*                               Form Validators                              */
@@ -96,7 +91,7 @@ const cardSection = new Section(
     items: initialCards,
     renderer: renderCard,
   },
-  cardTemplate
+  "#card-template"
 );
 
 cardSection.renderItems();

@@ -25,10 +25,4 @@ export default class PopupWithImage extends Popup {
     this._modalImage.alt = "";
     super.close();
   }
-
-  _setEventListeners() {
-    this._popupElement.setEventListeners("click", () => {
-      this._popupElement.close();
-    });
-  }
 }
