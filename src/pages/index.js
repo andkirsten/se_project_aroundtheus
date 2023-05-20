@@ -37,11 +37,8 @@ function fillProfileForm() {
   profileTitleInput.value = userData.title;
 }
 
-function handleProfileEditSubmit({ name, title }) {
-  userInfo.setUserInfo(
-    (name = profileNameInput.value),
-    (title = profileTitleInput.value)
-  );
+function handleProfileEditSubmit(data) {
+  userInfo.setUserInfo(data);
   profilePopup.close();
 }
 
@@ -58,8 +55,6 @@ const addCardPopup = new PopupWithForm("#new-card-modal", handleAddCardSubmit);
 
 //functions
 function handleAddCardSubmit({ name, link }) {
-  name = addTitleInput.value;
-  link = addURLInput.value;
   const newCardData = { name, link };
   addCardPopup.close();
   cardSection.addItem(newCardData);
