@@ -15,7 +15,3 @@ This project is uses media queries, grid layout, and is based on a Figma design 
 **Images**
 
 ![project screenshot](./src/images/project3screenshot.png)
-
-**URL**
-
-Site is live at https://andkirsten.github.io/se_project_aroundtheus/
