@@ -14,7 +14,7 @@ This project is uses media queries, grid layout, and is based on a Figma design 
 
 **Images**
 
-![project screenshot](./images/project3screenshot.png)
+![project screenshot](./src/images/project3screenshot.png)
 
 **URL**
 
