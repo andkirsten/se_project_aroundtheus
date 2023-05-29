@@ -54,13 +54,12 @@
         <p class="footer__copyright">&#169; 2023 Around The U.S.</p>
       </section>
     </div>
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                           profile edit modal                            -->
+    <!-- ----------------------------------------------------------------------- -->
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
-        <button
-          class="modal__close"
-          type="button"
-          id="profile-edit-close-button"
-        ></button>
+        <button class="modal__close" type="button"></button>
         <h2 class="modal__heading">Edit Profile</h2>
         <form class="modal__form" id="profile-edit-form">
           <div class="modal__input-group">
@@ -93,14 +92,12 @@
         </form>
       </div>
     </div>
-
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                             new card modal                              -->
+    <!-- ----------------------------------------------------------------------- -->
     <div class="modal" id="new-card-modal">
       <div class="modal__container">
-        <button
-          class="modal__close"
-          type="button"
-          id="new-card-close-button"
-        ></button>
+        <button class="modal__close" type="button"></button>
         <h2 class="modal__heading">New Place</h2>
         <form class="modal__form" id="new-card-form">
           <div class="modal__input-group">
@@ -137,42 +134,37 @@
         </form>
       </div>
     </div>
-
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                           photo expand modal                            -->
+    <!-- ----------------------------------------------------------------------- -->
     <div class="modal" id="photo-modal">
       <div class="modal__photo-container">
-        <button
-          class="modal__close"
-          type="button"
-          id="photo-modal-close-button"
-        ></button>
+        <button class="modal__close" type="button"></button>
         <img src="#" alt="" class="modal__photo" />
         <p class="modal__photo-caption"></p>
       </div>
     </div>
-
-    <div class="modal" id="sure-modal">
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                          delete confirm modal                           -->
+    <!-- ----------------------------------------------------------------------- -->
+    <div class="modal" id="delete-modal">
       <div class="modal__container">
-        <button
-          class="modal__close"
-          type="button"
-          id="sure-modal-close-button"
-        ></button>
+        <button class="modal__close" type="button"></button>
         <p class="modal__heading">Are you sure?</p>
-        <button class="modal__submit" type="button" id="sure-modal-button">
+        <button class="modal__submit" type="button" id="delete-modal-button">
           Yes
         </button>
       </div>
     </div>
 
-    <div class="modal" id="change-profile-picture-modal">
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                           avatar change modal                           -->
+    <!-- ----------------------------------------------------------------------- -->
+    <div class="modal" id="change-avatar-modal">
       <div class="modal__container">
-        <button
-          class="modal__close"
-          type="button"
-          id="sure-modal-close-button"
-        ></button>
+        <button class="modal__close" type="button"></button>
         <p class="modal__heading">Change profile picture</p>
-        <form class="modal__form" id="profile-picture-form">
+        <form class="modal__form" id="avatar-form">
           <div class="modal__input-group">
             <input
               type="text"
@@ -196,7 +188,9 @@
         </form>
       </div>
     </div>
-
+    <!-- ----------------------------------------------------------------------- -->
+    <!--                              card template                              -->
+    <!-- ----------------------------------------------------------------------- -->
     <template id="card-template">
       <li class="card">
         <img src="${link}" alt="${name}" class="card__img" />

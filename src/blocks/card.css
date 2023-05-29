@@ -30,6 +30,10 @@
   width: 100%;
 }
 
+.card__remove-button_disabled {
+  display: none;
+}
+
 .card__remove-button:hover {
   opacity: 0.6;
 }

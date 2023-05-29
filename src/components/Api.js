@@ -61,7 +61,9 @@ export default class Api {
       method: "DELETE",
       headers: this._headers,
     })
-      .then((res) => console.log("delete" + res))
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Card Error: ${res.status}`)
+      )
       .catch((err) => {
         console.error(err);
       });

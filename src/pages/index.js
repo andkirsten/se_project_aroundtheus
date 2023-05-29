@@ -1,6 +1,7 @@
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithConfirm from "../components/PopupWithConfirm.js";
 import Section from "../components/Section.js";
 import Api from "../components/Api.js";
 import "./index.css";
@@ -9,7 +10,6 @@ import {
   profileEditForm,
   addCardBtn,
   addCardForm,
-  cardList,
   settings,
   profileNameInput,
   profileTitleInput,
@@ -37,8 +37,10 @@ const userInfo = new UserInfo(
   ".profile__title",
   "profile__image"
 );
+let user;
 api.getUserInfo().then((userData) => {
   userInfo.setUserInfo({ name: userData.name, title: userData.about });
+  user = userData;
 });
 
 const profilePopup = new PopupWithForm(
@@ -70,7 +72,7 @@ profileEditBtn.addEventListener("click", function () {
 /*                                      Card                                  */
 /* -------------------------------------------------------------------------- */
 const addCardPopup = new PopupWithForm("#new-card-modal", handleAddCardSubmit);
-
+const removeCardPopup = new PopupWithConfirm("#delete-modal");
 //functions
 function handleAddCardSubmit({ name, link }) {
   addCardPopup.close();
@@ -80,12 +82,28 @@ function handleAddCardSubmit({ name, link }) {
   });
 }
 
-// function handleLikeClick(item, likes) {
-//   api.addLike(item, likes);
+function handleRemoveCardClick(id) {
+  removeCardPopup.close();
+  api.removeCard(id);
+}
+
+// const userID = api.getUserInfo().then((res) => {
+//   res._id;
+// });
+
+// async function getUserID() {
+//   const userInfo = await api.getUserInfo();
+//   return userInfo._id;
 // }
 
 function renderCard(item) {
-  const newCard = new Card(item, "#card-template", handleLikeClick);
+  const newCard = new Card(
+    item,
+    "#card-template",
+    user,
+    handleLikeClick,
+    handleRemoveCardClick
+  );
   const cardElement = newCard.createCard();
   return cardElement;
 }
