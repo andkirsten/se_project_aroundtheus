@@ -38,7 +38,7 @@
   background-color: white;
   display: flex;
   justify-content: space-between;
-  padding: 25px 20px;
+  padding: 25px 15px 25px 21px;
 }
 
 .card__title {
@@ -52,6 +52,19 @@
   overflow: hidden;
 }
 
+.card__like-elements {
+  display: flex;
+  flex-direction: column;
+  max-width: 20px;
+  width: 100%;
+  align-items: center;
+  gap: 3px;
+}
+
+.card__like-counter {
+  margin: 0;
+}
+
 .card__like-button {
   background-image: url(../images/heart.svg);
   background-position: center;
@@ -60,8 +73,8 @@
   border: none;
   padding: 0;
   cursor: pointer;
-  max-width: 20px;
-  width: 100%;
+  width: 20px;
+  height: 20px;
 }
 
 .card__like-button:hover {

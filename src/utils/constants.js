@@ -12,32 +12,32 @@ export const dongdaemun = new URL("../images/ddplaza.jpg", import.meta.url);
 export const hanRiver = new URL("../images/han.jpg", import.meta.url);
 export const bukhansan = new URL("../images/bukhansan.jpg", import.meta.url);
 // card data
-export const initialCards = [
-  {
-    name: "Myeongdong",
-    link: myeongdong,
-  },
-  {
-    name: "Gyeongbukgong Palace",
-    link: gyeongbukgong,
-  },
-  {
-    name: "Namsan Tower",
-    link: namsan,
-  },
-  {
-    name: "Dongdaemun Design Plaza",
-    link: dongdaemun,
-  },
-  {
-    name: "Han River",
-    link: hanRiver,
-  },
-  {
-    name: "Bukhansan National Park",
-    link: bukhansan,
-  },
-];
+// export const initialCards = [
+//   {
+//     name: "Myeongdong",
+//     link: myeongdong,
+//   },
+//   {
+//     name: "Gyeongbukgong Palace",
+//     link: gyeongbukgong,
+//   },
+//   {
+//     name: "Namsan Tower",
+//     link: namsan,
+//   },
+//   {
+//     name: "Dongdaemun Design Plaza",
+//     link: dongdaemun,
+//   },
+//   {
+//     name: "Han River",
+//     link: hanRiver,
+//   },
+//   {
+//     name: "Bukhansan National Park",
+//     link: bukhansan,
+//   },
+// ];
 
 //Profile Elements
 export const profileEditBtn = document.querySelector("#profile-edit-button");

@@ -18,7 +18,7 @@
       <header class="header" id="header">
         <img
           class="logo"
-          src="<%=require('./images/logo.svg')%>"
+          src="<%=require('./images/AroundKorea.png')%>"
           alt="around the US logo"
         />
       </header>
@@ -30,14 +30,14 @@
             class="profile__image"
           />
           <div class="profile__profile-info">
-            <h1 class="profile__name" id="profile-name">Jacques Cousteau</h1>
+            <h1 class="profile__name" id="profile-name"></h1>
             <button
               id="profile-edit-button"
               class="profile__edit-button"
               type="button"
               aria-label="edit"
             ></button>
-            <p class="profile__title" id="profile-title">Explorer</p>
+            <p class="profile__title" id="profile-title"></p>
           </div>
           <button
             class="profile__add-button"
@@ -79,7 +79,7 @@
           <div class="modal__input-group">
             <input
               type="text"
-              name="title"
+              name="about"
               class="modal__input"
               id="profile-title-input"
               placeholder="About Me"
@@ -132,7 +132,7 @@
             type="submit"
             id="new-card-submit-button"
           >
-            Save
+            Create
           </button>
         </form>
       </div>
@@ -150,6 +150,53 @@
       </div>
     </div>
 
+    <div class="modal" id="sure-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          type="button"
+          id="sure-modal-close-button"
+        ></button>
+        <p class="modal__heading">Are you sure?</p>
+        <button class="modal__submit" type="button" id="sure-modal-button">
+          Yes
+        </button>
+      </div>
+    </div>
+
+    <div class="modal" id="change-profile-picture-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          type="button"
+          id="sure-modal-close-button"
+        ></button>
+        <p class="modal__heading">Change profile picture</p>
+        <form class="modal__form" id="profile-picture-form">
+          <div class="modal__input-group">
+            <input
+              type="text"
+              name="profile"
+              class="modal__input"
+              id="profile-photo-input"
+              placeholder="Photo"
+              minlength="2"
+              maxlength="30"
+              required
+            />
+            <span class="modal__error" id="profile-photo-input-error"></span>
+          </div>
+          <button
+            class="modal__submit"
+            type="submit"
+            id="profile-photo-submit-button"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
     <template id="card-template">
       <li class="card">
         <img src="${link}" alt="${name}" class="card__img" />
@@ -160,11 +207,14 @@
         ></button>
         <div class="card__info">
           <h2 class="card__title"></h2>
-          <button
-            class="card__like-button"
-            type="button"
-            aria-label="like"
-          ></button>
+          <div class="card__like-elements">
+            <button
+              class="card__like-button"
+              type="button"
+              aria-label="like"
+            ></button>
+            <p class="card__like-counter"></p>
+          </div>
         </div>
       </li>
     </template>
