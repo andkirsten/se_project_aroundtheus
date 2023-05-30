@@ -35,6 +35,10 @@
   transform: scale(0.9);
 }
 
+.modal__container_type_confirm {
+  max-height: 111px;
+}
+
 .modal__photo-container {
   position: relative;
   margin-top: 90px;
@@ -71,6 +75,10 @@
   line-height: 1.2;
   padding-bottom: 54px;
   margin: 0;
+}
+
+.modal__heading_type_confirm {
+  padding-bottom: 38px;
 }
 
 .modal__photo {
@@ -153,6 +161,10 @@
   opacity: 0.8;
 }
 
+.modal__submit_type_confirm {
+  margin-top: 0;
+}
+
 .modal__submit_disabled {
   background-color: #e5e5e5;
   color: black;
@@ -166,7 +178,13 @@
   .modal__container {
     margin-top: 123px;
     max-width: 238px;
-    max-height: 330px;
+    padding: 25px 22px;
+  }
+
+  .modal__container_type_confirm {
+    margin-top: 123px;
+    max-width: 238px;
+    max-height: 181px;
     padding: 25px 22px;
   }
 

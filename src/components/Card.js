@@ -1,37 +1,35 @@
 import PopupWithImage from "./PopupWithImage.js";
 
 export default class Card {
-  constructor(
+  constructor({
     cardData,
     cardSelector,
-    userId,
+    userInfo,
+    deletePopup,
     handleLikeClick,
-    handleRemoveCard
-  ) {
+    handleRemoveCard,
+  }) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._likes = cardData.likes;
-    this._id = cardData._id;
-    this._userId = userId;
+    this._ownerId = cardData.owner._id;
+    this._userId = userInfo;
+    this._deletePopup = deletePopup;
+    this._cardId = cardData._id;
     this._cardSelector = cardSelector;
-    this._userInfo = userInfo;
     this._handleLikeClick = handleLikeClick;
     this._handleRemoveCard = handleRemoveCard;
   }
 
   _setEventListeners() {
-    this._likeBtn.addEventListener("click", () => {
-      this._handleLikeClick;
-    });
-    this._cardElement
-      .querySelector(".card__remove-button")
-      .addEventListener("click", () => {
-        this._handleRemoveCard(this._id);
-      });
     const imagePopup = new PopupWithImage(
       { name: this._name, link: this._link },
       "#photo-modal"
     );
+
+    this._likeBtn.addEventListener("click", () => {
+      this._handleLikeClick;
+    });
 
     this._imageEl.addEventListener("click", () => {
       imagePopup.open();
@@ -46,12 +44,14 @@ export default class Card {
   }
 
   _checkCardOwner() {
-    console.log(this._userId);
-    if (this._id != this._userId) {
-      const removeBtn = this._cardElement.querySelector(".card__remove-button");
-      removeBtn.classList.add(".card__remove-button_disabled");
+    if (this._ownerId === this._userId) {
+      const trashBtn = this._cardElement.querySelector(".card__remove-button");
+      trashBtn.addEventListener("mousedown", () => {
+        this._handleRemoveCard(this._cardId);
+      });
     } else {
-      pass;
+      const trashBtn = this._cardElement.querySelector(".card__remove-button");
+      trashBtn.classList.add("card__remove-button_disabled");
     }
   }
 
@@ -71,8 +71,12 @@ export default class Card {
     return this._cardElement;
   }
 
-  // _handleRemove() {
-  //   this._handleRemoveCard(this._id);
-
+  // _handleRemoveClick() {
+  //   this._deletePopup.open();
   // }
+
+  handleDeleteCard() {
+    this._cardElement.remove();
+    this._cardElement = null;
+  }
 }
