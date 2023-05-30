@@ -71,10 +71,6 @@ export default class Card {
     return this._cardElement;
   }
 
-  // _handleRemoveClick() {
-  //   this._deletePopup.open();
-  // }
-
   handleDeleteCard() {
     this._cardElement.remove();
     this._cardElement = null;

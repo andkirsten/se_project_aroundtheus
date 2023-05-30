@@ -6,9 +6,6 @@ export default class PopupWithConfirm extends Popup {
     this._confirmButton = this._popupElement.querySelector(
       "#delete-modal-button"
     );
-
-    // this._cardId = cardId;
-    // this._handleRemoveCard = handleRemoveCard;
   }
   open() {
     this._confirmButton.addEventListener("mousedown", () => {
@@ -26,7 +23,5 @@ export default class PopupWithConfirm extends Popup {
 
   setClickAction(action) {
     this._handleDeleteClick = action;
-    // this._handleRemoveCard(id);
-    // this.close();
   }
 }
