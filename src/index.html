@@ -24,11 +24,8 @@
       </header>
       <main class="main">
         <section class="profile">
-          <img
-            src="<%=require('./images/jacques-cousteau.jpg')%>"
-            alt="jacques-cousteau"
-            class="profile__image"
-          />
+          <img src="" alt="" class="profile__image" />
+          <span class="profile__image-overlay"></span>
           <div class="profile__profile-info">
             <h1 class="profile__name" id="profile-name"></h1>
             <button
@@ -70,7 +67,7 @@
               id="profile-name-input"
               placeholder="Name"
               minlength="2"
-              maxlength="40"
+              maxlength="200"
               required
             />
             <span class="modal__error" id="profile-name-input-error"></span>
@@ -129,7 +126,7 @@
             type="submit"
             id="new-card-submit-button"
           >
-            Create
+            Save
           </button>
         </form>
       </div>
@@ -165,28 +162,24 @@
     <!--                           avatar change modal                           -->
     <!-- ----------------------------------------------------------------------- -->
     <div class="modal" id="change-avatar-modal">
-      <div class="modal__container">
+      <div class="modal__container modal__container_type_avatar">
         <button class="modal__close" type="button"></button>
         <p class="modal__heading">Change profile picture</p>
         <form class="modal__form" id="avatar-form">
           <div class="modal__input-group">
             <input
               type="text"
-              name="profile"
+              name="avatar"
               class="modal__input"
-              id="profile-photo-input"
-              placeholder="Photo"
+              id="avatar-link-input"
+              placeholder="Profile Image Link"
               minlength="2"
-              maxlength="30"
+              maxlength="200"
               required
             />
-            <span class="modal__error" id="profile-photo-input-error"></span>
+            <span class="modal__error" id="avatar-input-error"></span>
           </div>
-          <button
-            class="modal__submit"
-            type="submit"
-            id="profile-photo-submit-button"
-          >
+          <button class="modal__submit" type="submit" id="avatar-submit-button">
             Save
           </button>
         </form>
@@ -197,7 +190,7 @@
     <!-- ----------------------------------------------------------------------- -->
     <template id="card-template">
       <li class="card">
-        <img src="${link}" alt="${name}" class="card__img" />
+        <img src="" alt="" class="card__img" />
         <button
           class="card__remove-button"
           type="button"

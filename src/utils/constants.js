@@ -71,6 +71,11 @@ export const photoModalCloseBtn = document.querySelector(
   "#photo-modal-close-button"
 );
 
+//change avatar modal
+export const avatarEl = document.querySelector(".profile__image");
+export const avatarModalInput = document.querySelector("#avatar-link-input");
+export const avatarOverlay = document.querySelector(".profile__image-overlay");
+
 //General Elements
 export const cardTemplate = document.querySelector("#card-template").content;
 export const cardList = document.querySelector("#card-list");

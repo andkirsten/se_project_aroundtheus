@@ -35,14 +35,36 @@ export default class Api {
   }
 
   editUserInfo({ name, about }) {
-    fetch(`${this._baseUrl}/users/me`, {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name: name,
         about: about,
       }),
-    });
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Add Card Error: ${res.status}`)
+      )
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  editAvatarInfo({ avatar }) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: avatar,
+      }),
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Add Card Error: ${res.status}`)
+      )
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   addCard({ name, link }) {

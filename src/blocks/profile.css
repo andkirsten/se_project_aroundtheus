@@ -12,6 +12,26 @@
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
+  position: relative;
+  cursor: pointer;
+}
+
+.profile__image-overlay {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 40%;
+  object-fit: cover;
+  background: rgba(0, 0, 0, 0.8);
+  background-image: url(../images/pencil.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.profile__image-overlay:hover {
+  opacity: 1;
 }
 
 .profile__profile-info {
