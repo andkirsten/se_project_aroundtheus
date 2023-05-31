@@ -62,7 +62,18 @@ function renderCard(item) {
     cardSelector: "#card-template",
     userInfo: userId,
     deletePopup: confirmDeletePopup,
-    handleLikeClick: () => {},
+    handleLikeClick: (liked) => {
+      console.log(liked);
+      if (liked) {
+        api.removeLike(item._id).then((res) => {
+          card.updateLikes(res.likes);
+        });
+      } else {
+        api.addLike(item._id).then((res) => {
+          card.updateLikes(res.likes);
+        });
+      }
+    },
     handleRemoveCard: (cardId) => {
       confirmDeletePopup.open();
       confirmDeletePopup.setClickAction(() => {

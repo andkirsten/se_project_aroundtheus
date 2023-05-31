@@ -9,7 +9,7 @@ export default class Api {
       headers: this._headers,
     })
       .then((res) =>
-        res.ok ? res.json() : Promise.reject(`Card Error: ${res.status}`)
+        res.ok ? res.json() : Promise.reject(`Get Cards Error: ${res.status}`)
       )
       .catch((err) => {
         console.error(err);
@@ -21,7 +21,9 @@ export default class Api {
       headers: this._headers,
     })
       .then((res) =>
-        res.ok ? res.json() : Promise.reject(`Profile Error: ${res.status}`)
+        res.ok
+          ? res.json()
+          : Promise.reject(`Get User Info Error: ${res.status}`)
       )
       .catch((err) => {
         console.error(err);
@@ -53,7 +55,7 @@ export default class Api {
       }),
     })
       .then((res) =>
-        res.ok ? res.json() : Promise.reject(`Card Error: ${res.status}`)
+        res.ok ? res.json() : Promise.reject(`Add Card Error: ${res.status}`)
       )
       .catch((err) => {
         console.error(err);
@@ -66,24 +68,36 @@ export default class Api {
       headers: this._headers,
     })
       .then((res) =>
-        res.ok ? res.json() : Promise.reject(`Card Error: ${res.status}`)
+        res.ok ? res.json() : Promise.reject(`Remove Card Error: ${res.status}`)
       )
       .catch((err) => {
         console.error(err);
       });
   }
 
-  // addLike(item, likes) {
-  //   likes += 1;
-  //   console.log(likes);
-  //   return fetch(
-  //     `https://around.nomoreparties.co/v1/group-12/cards/likes/${item._id}`,
-  //     {
-  //       method: "PUT",
-  //       headers: {
-  //         authorization: this._authToken,
-  //       },
-  //     }
-  //   ).then((res) => console.log(res));
-  // }
+  addLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      method: "PUT",
+      headers: this._headers,
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Add Like Error: ${res.status}`)
+      )
+      .catch((err) => {
+        console.error(err);
+      });
+  }
+
+  removeLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    })
+      .then((res) =>
+        res.ok ? res.json() : Promise.reject(`Add Like Error: ${res.status}`)
+      )
+      .catch((err) => {
+        console.error(err);
+      });
+  }
 }

@@ -26,9 +26,8 @@ export default class Card {
       { name: this._name, link: this._link },
       "#photo-modal"
     );
-
     this._likeBtn.addEventListener("click", () => {
-      this._handleLikeClick;
+      this._handleLikeClick(this.isLiked());
     });
 
     this._imageEl.addEventListener("click", () => {
@@ -55,6 +54,28 @@ export default class Card {
     }
   }
 
+  isLiked() {
+    return this._likes.some((like) => {
+      return like._id === this._userId;
+    });
+  }
+
+  updateLikes(likes) {
+    this._likes = likes;
+    this.renderLikes();
+  }
+
+  renderLikes() {
+    const likes = this._cardElement.querySelector(".card__like-counter");
+    likes.textContent = this._likes.length;
+    const isLiked = this.isLiked();
+    if (isLiked === true) {
+      this._likeBtn.classList.add("card__like-button_active");
+    } else {
+      this._likeBtn.classList.remove("card__like-button_active");
+    }
+  }
+
   createCard() {
     this._cardElement = this._getElement();
     this._imageEl = this._cardElement.querySelector(".card__img");
@@ -62,12 +83,10 @@ export default class Card {
     this._imageEl.alt = this._name;
     const cardTitle = this._cardElement.querySelector(".card__title");
     cardTitle.textContent = this._name;
-    const likes = this._cardElement.querySelector(".card__like-counter");
-    likes.textContent = this._likes.length;
     this._likeBtn = this._cardElement.querySelector(".card__like-button");
     this._setEventListeners();
     this._checkCardOwner();
-
+    this.renderLikes();
     return this._cardElement;
   }
 
