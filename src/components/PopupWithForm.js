@@ -37,8 +37,8 @@ export default class PopupWithForm extends Popup {
   isLoading() {
     this._submitBtn.textContent = "Saving...";
   }
-
   resetSubmitBtn() {
+    this.close();
     this._submitBtn.textContent = "Save";
   }
 }

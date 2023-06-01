@@ -15,6 +15,7 @@ import {
   profileTitleInput,
   avatarModalInput,
   avatarOverlay,
+  avatarForm,
 } from "../utils/constants.js";
 import UserInfo from "../components/UserInfo.js";
 
@@ -37,23 +38,27 @@ const userInfo = new UserInfo(
 );
 let userId;
 let cardSection;
-api.getAppInfo().then(([cardData, userData]) => {
-  userId = userData._id;
-  userInfo.setUserInfo({
-    name: userData.name,
-    about: userData.about,
-    avatar: userData.avatar,
+api
+  .getAppInfo()
+  .then(([cardData, userData]) => {
+    userId = userData._id;
+    userInfo.setUserInfo({
+      name: userData.name,
+      about: userData.about,
+      avatar: userData.avatar,
+    });
+    cardSection = new Section(
+      {
+        items: cardData,
+        renderer: renderCard,
+      },
+      "#card-list"
+    );
+    cardSection.renderItems(cardData);
+  })
+  .catch((err) => {
+    console.error("App Info Error:" + err);
   });
-
-  cardSection = new Section(
-    {
-      items: cardData,
-      renderer: renderCard,
-    },
-    "#card-list"
-  );
-  cardSection.renderItems(cardData);
-});
 
 /* -------------------------------------------------------------------------- */
 /*                                 validation                                 */
@@ -63,6 +68,9 @@ profileEditValidator.enableValidation();
 
 const addCardValidator = new FormValidator(settings, addCardForm);
 addCardValidator.enableValidation();
+
+const avatarChangeValidator = new FormValidator(settings, avatarForm);
+avatarChangeValidator.enableValidation();
 
 /* -------------------------------------------------------------------------- */
 /*                               Card Rendering                               */
@@ -79,22 +87,36 @@ function renderCard(item) {
     deletePopup: confirmDeletePopup,
     handleLikeClick: (liked) => {
       if (liked) {
-        api.removeLike(item._id).then((res) => {
-          card.updateLikes(res.likes);
-        });
+        api
+          .removeLike(item._id)
+          .then((res) => {
+            card.updateLikes(res.likes);
+          })
+          .catch((err) => {
+            console.error("Like Remove Error:" + err);
+          });
       } else {
-        api.addLike(item._id).then((res) => {
-          card.updateLikes(res.likes);
-        });
+        api
+          .addLike(item._id)
+          .then((res) => {
+            card.updateLikes(res.likes);
+          })
+          .catch((err) => {
+            console.error("Like Add Error:" + err);
+          });
       }
     },
     handleRemoveCard: (cardId) => {
-      confirmDeletePopup.open();
       confirmDeletePopup.setClickAction(() => {
-        api.removeCard(cardId);
-        confirmDeletePopup.close();
-        card.handleDeleteCard();
+        api
+          .removeCard(cardId)
+          .then(card.handleDeleteCard())
+          .then(confirmDeletePopup.close())
+          .catch((err) => {
+            console.error("Remove Card Error:" + err);
+          });
       });
+      confirmDeletePopup.open();
     },
   });
   const cardElement = card.createCard();
@@ -109,7 +131,10 @@ function handleAddCardSubmit({ name, link }) {
       const newCard = renderCard(res);
       cardSection.addItem(newCard);
     })
-    .finally(addCardPopup.close(), addCardPopup.resetSubmitBtn());
+    .catch((err) => {
+      console.error("Add Card Error:" + err);
+    })
+    .finally(addCardPopup.resetSubmitBtn());
 }
 
 //event listeners
@@ -145,7 +170,10 @@ function handleProfileEditSubmit(data) {
     .then((res) => {
       userInfo.setUserInfo(res);
     })
-    .finally(profilePopup.close(), profilePopup.resetSubmitBtn());
+    .catch((err) => {
+      console.error("Profile Edit Error:" + err);
+    })
+    .finally(profilePopup.resetSubmitBtn());
 }
 
 function fillAvatarForm() {
@@ -160,6 +188,9 @@ function handleAvatarFormSubmit(data) {
     .then((res) => {
       userInfo.setAvatarInfo(res.avatar);
     })
+    .catch((err) => {
+      console.error("Avatar Error:" + err);
+    })
     .finally(avatarPopup.close());
 }
 
@@ -173,7 +204,3 @@ avatarOverlay.addEventListener("click", function () {
   fillAvatarForm();
   avatarPopup.open();
 });
-
-/* -------------------------------------------------------------------------- */
-/*                               Form Validators                              */
-/* -------------------------------------------------------------------------- */

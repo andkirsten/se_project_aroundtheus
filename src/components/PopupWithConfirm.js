@@ -8,16 +8,15 @@ export default class PopupWithConfirm extends Popup {
     );
   }
   open() {
-    this._confirmButton.addEventListener("mousedown", () => {
-      this._handleDeleteClick();
-    });
+    this._confirmButton.addEventListener("mousedown", this._handleDeleteClick);
     super.open();
   }
 
   close() {
-    this._confirmButton.removeEventListener("mousedown", () => {
-      this._handleDeleteClick();
-    });
+    this._confirmButton.removeEventListener(
+      "mousedown",
+      this._handleDeleteClick
+    );
     super.close();
   }
 
