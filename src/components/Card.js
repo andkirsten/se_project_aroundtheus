@@ -6,7 +6,6 @@ export default class Card {
     deletePopup,
     handleLikeClick,
     handleRemoveCard,
-    // imagePopup,
     handleCardClick,
   }) {
     this._name = cardData.name;

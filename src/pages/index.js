@@ -120,10 +120,6 @@ function renderCard(item) {
       });
       confirmDeletePopup.open();
     },
-    // imagePopup: new PopupWithImage(
-    //   { name: item.name, link: item.link },
-    //   "#photo-modal"
-    // ),
     handleCardClick: ({ name, link }) => {
       imagePopup.open({ name, link });
     },
