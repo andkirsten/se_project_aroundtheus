@@ -6,7 +6,8 @@ export default class Card {
     deletePopup,
     handleLikeClick,
     handleRemoveCard,
-    imagePopup,
+    // imagePopup,
+    handleCardClick,
   }) {
     this._name = cardData.name;
     this._link = cardData.link;
@@ -18,7 +19,7 @@ export default class Card {
     this._cardSelector = cardSelector;
     this._handleLikeClick = handleLikeClick;
     this._handleRemoveCard = handleRemoveCard;
-    this._imagePopup = imagePopup;
+    this._handleCardClick = handleCardClick;
   }
 
   _setEventListeners() {
@@ -27,7 +28,7 @@ export default class Card {
     });
 
     this._imageEl.addEventListener("click", () => {
-      this._imagePopup.open();
+      this._handleCardClick({ name: this._name, link: this._link });
     });
   }
 

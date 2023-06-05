@@ -78,6 +78,7 @@ avatarChangeValidator.enableValidation();
 /* -------------------------------------------------------------------------- */
 const addCardPopup = new PopupWithForm("#new-card-modal", handleAddCardSubmit);
 const confirmDeletePopup = new PopupWithConfirm("#delete-modal");
+const imagePopup = new PopupWithImage("#photo-modal");
 
 // functions
 function renderCard(item) {
@@ -119,10 +120,13 @@ function renderCard(item) {
       });
       confirmDeletePopup.open();
     },
-    imagePopup: new PopupWithImage(
-      { name: item.name, link: item.link },
-      "#photo-modal"
-    ),
+    // imagePopup: new PopupWithImage(
+    //   { name: item.name, link: item.link },
+    //   "#photo-modal"
+    // ),
+    handleCardClick: ({ name, link }) => {
+      imagePopup.open({ name, link });
+    },
   });
   const cardElement = card.createCard();
   return cardElement;
@@ -199,7 +203,7 @@ function handleAvatarFormSubmit(data) {
     .catch((err) => {
       console.error("Avatar Error:" + err);
     })
-    .finally(avatarPopup.renderLoading(false, "Save"));
+    .finally(() => avatarPopup.renderLoading(false, "Save"));
 }
 
 //event listeners
