@@ -7,10 +7,7 @@ This project is uses media queries, grid layout, and is based on a Figma design 
 - Grid Layout
 - Figma
 - Media Queries
-
-**Figma**
-
-- [Link to the project on Figma](https://www.figma.com/file/ii4xxsJ0ghevUOcssTlHZv/Sprint-3%3A-Around-the-US?node-id=0%3A1)
+- API integration
 
 **Images**
 
