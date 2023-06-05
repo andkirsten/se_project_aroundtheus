@@ -1,5 +1,3 @@
-import PopupWithImage from "./PopupWithImage.js";
-
 export default class Card {
   constructor({
     cardData,
@@ -8,6 +6,7 @@ export default class Card {
     deletePopup,
     handleLikeClick,
     handleRemoveCard,
+    imagePopup,
   }) {
     this._name = cardData.name;
     this._link = cardData.link;
@@ -19,19 +18,16 @@ export default class Card {
     this._cardSelector = cardSelector;
     this._handleLikeClick = handleLikeClick;
     this._handleRemoveCard = handleRemoveCard;
+    this._imagePopup = imagePopup;
   }
 
   _setEventListeners() {
-    const imagePopup = new PopupWithImage(
-      { name: this._name, link: this._link },
-      "#photo-modal"
-    );
     this._likeBtn.addEventListener("click", () => {
       this._handleLikeClick(this.isLiked());
     });
 
     this._imageEl.addEventListener("click", () => {
-      imagePopup.open();
+      this._imagePopup.open();
     });
   }
 
@@ -44,13 +40,11 @@ export default class Card {
 
   _checkCardOwner() {
     if (this._ownerId === this._userId) {
-      const trashBtn = this._cardElement.querySelector(".card__remove-button");
-      trashBtn.addEventListener("mousedown", () => {
+      this._removeBtn.addEventListener("mousedown", () => {
         this._handleRemoveCard(this._cardId);
       });
     } else {
-      const trashBtn = this._cardElement.querySelector(".card__remove-button");
-      trashBtn.classList.add("card__remove-button_disabled");
+      this._removeBtn.classList.add("card__remove-button_disabled");
     }
   }
 
@@ -84,6 +78,7 @@ export default class Card {
     const cardTitle = this._cardElement.querySelector(".card__title");
     cardTitle.textContent = this._name;
     this._likeBtn = this._cardElement.querySelector(".card__like-button");
+    this._removeBtn = this._cardElement.querySelector(".card__remove-button");
     this._setEventListeners();
     this._checkCardOwner();
     this.renderLikes();

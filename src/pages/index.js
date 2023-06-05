@@ -2,6 +2,7 @@ import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import Api from "../components/Api.js";
 import "./index.css";
@@ -110,31 +111,36 @@ function renderCard(item) {
       confirmDeletePopup.setClickAction(() => {
         api
           .removeCard(cardId)
-          .then(card.handleDeleteCard())
-          .then(confirmDeletePopup.close())
+          .then(() => card.handleDeleteCard())
+          .then(() => confirmDeletePopup.close())
           .catch((err) => {
             console.error("Remove Card Error:" + err);
           });
       });
       confirmDeletePopup.open();
     },
+    imagePopup: new PopupWithImage(
+      { name: item.name, link: item.link },
+      "#photo-modal"
+    ),
   });
   const cardElement = card.createCard();
   return cardElement;
 }
 
 function handleAddCardSubmit({ name, link }) {
-  addCardPopup.isLoading();
+  addCardPopup.renderLoading(true);
   api
     .addCard({ name, link })
     .then((res) => {
       const newCard = renderCard(res);
       cardSection.addItem(newCard);
+      addCardPopup.close();
     })
     .catch((err) => {
       console.error("Add Card Error:" + err);
     })
-    .finally(addCardPopup.resetSubmitBtn());
+    .finally(() => addCardPopup.renderLoading(false, "Create"));
 }
 
 //event listeners
@@ -143,7 +149,7 @@ addCardBtn.addEventListener("click", () => {
   addCardPopup.open();
 });
 /* -------------------------------------------------------------------------- */
-/*                                  Profile                                 */
+/*                                  Popups                                    */
 /* -------------------------------------------------------------------------- */
 
 const profilePopup = new PopupWithForm(
@@ -164,16 +170,17 @@ function fillProfileForm() {
 }
 
 function handleProfileEditSubmit(data) {
-  profilePopup.isLoading();
+  profilePopup.renderLoading(true);
   api
     .editUserInfo(data)
     .then((res) => {
       userInfo.setUserInfo(res);
+      profilePopup.close();
     })
     .catch((err) => {
       console.error("Profile Edit Error:" + err);
     })
-    .finally(profilePopup.resetSubmitBtn());
+    .finally(() => profilePopup.renderLoading(false, "Save"));
 }
 
 function fillAvatarForm() {
@@ -182,16 +189,17 @@ function fillAvatarForm() {
 }
 
 function handleAvatarFormSubmit(data) {
-  avatarPopup.isLoading();
+  avatarPopup.renderLoading(true);
   api
     .editAvatarInfo(data)
     .then((res) => {
       userInfo.setAvatarInfo(res.avatar);
+      avatarPopup.close();
     })
     .catch((err) => {
       console.error("Avatar Error:" + err);
     })
-    .finally(avatarPopup.close());
+    .finally(avatarPopup.renderLoading(false, "Save"));
 }
 
 //event listeners

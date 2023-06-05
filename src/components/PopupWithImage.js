@@ -2,10 +2,9 @@ import Popup from "./Popup.js";
 
 export default class PopupWithImage extends Popup {
   constructor({ name, link }, popupSelector) {
-    super(popupSelector);
+    super({ popupSelector });
     this._name = name;
     this._link = link;
-    this._popupElement = document.querySelector(popupSelector);
     this._modalCaption = this._popupElement.querySelector(
       ".modal__photo-caption"
     );
